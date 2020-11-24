@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="chat-container">
+    <div class="online-users">
+      <h1>Online Users</h1>
+    </div>
+    <div class="message-container">
+      <div><h1>{{ chatUser }}</h1></div>
+      <div>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" class ="logout">
+        <button mat-menu-item>
+          <mat-icon>person_outline</mat-icon>
+          <span>logout</span>
+        </button>
+      </mat-menu>
+      </div>
+    </div>
+    <div class="users" >
+      <table>
+        <tr *ngFor = "let user of users">
+          <td *ngIf = "user.username!= currentUsername">
+            <button mat-stroked-button (click) = "selectedUser(user.username)">{{ user.username }}</button>
+          </td>
+        </tr>
+      </table>
+      
+    </div>
+    <div class="messages">
+      <div *ngFor ="let message of messages" class = "content">
+        <p *ngIf="message.user == currentUsername || message.user == chatUser" [ngClass] = "{'sameUser' : message.user == currentUsername,'diffUser' : message.user == chatUser}">
+            {{message.message}}
+        </p>
+      </div>
+    </div>
+    <div class="refresh">
+      <button mat-stroked-button color="primary" (click) = "getOnlineUsers()">Refresh</button>
+    </div>
+    <div class="message-field">
+      <form [formGroup]= "messageForm" (ngSubmit) = "onSubmit()">
+        <input type="text" formControlName="message" placeholder="Message....." required> 
+        <button mat-raised-button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<h1>Online users</h1>
+<div *ngFor="let user of users">
+  <p *ngIf = "user.username!= currentUsername">{{ user.username }}</p>
+</div> -->
+  

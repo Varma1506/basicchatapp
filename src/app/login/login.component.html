@@ -1,0 +1,19 @@
+<form [formGroup]= "loginForm" (ngSubmit) = "onSubmit()">
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label class="label">Name</mat-label>
+        <input matInput class="textbox" formControlName="username" [class.is-invalid]="loginForm.get('username').touched && loginForm.get('username').invalid">
+        <mat-error *ngIf="!loginForm.get('username').valid">{{usernameErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label class="label">Password</mat-label>
+        <input matInput class="textbox" [type]="hide ? 'password' : 'text'"  formControlName="password">
+        <mat-icon matSuffix (click)="hide = !hide" class="eye">{{hide?'visibility_off':'visibility'}}</mat-icon>
+        <mat-error *ngIf="!loginForm.get('password').valid">{{passwordErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <div class="buttons">
+        <button mat-stroked-button class="mainbtn" type="submit" [disabled]="!loginForm.valid">Login</button>    
+        <button mat-raised-button  class="togglebtn" (click)="routelogin()">Sign up</button>
+        
+    </div>
+</form>
