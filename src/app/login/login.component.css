@@ -1,0 +1,37 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+form{
+  position: absolute;
+  top:15%;
+  margin-left: 35%;
+  width:400px;
+  border: 2px #3f3f3f;
+}
+.example-full-width{
+  width: 100%;
+}
+.hideButton{
+  background: none;
+  border: none;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+.togglebtn{
+  background-color: #3cba54;
+  color: white;
+  margin-left:20px;
+}
+.mainbtn{
+    background-color: #4885ed;
+    color: white;
+}
+.mainbtn:disabled{
+    cursor: not-allowed red;
+}
